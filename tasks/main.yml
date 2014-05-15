@@ -1,0 +1,12 @@
+---
+- name: hardening host configuration
+  lineinfile: >
+    dest=/etc/host.conf
+    line="{{ item }}"
+    state=present
+  with_items:
+    - "order bind,hosts"
+    - "nospoof on"
+
+# REFERENCES:
+# Ubuntu step 7 hardening from http://www.thefanclub.co.za/how-to/how-secure-ubuntu-1204-lts-server-part-1-basics
